@@ -5,7 +5,7 @@ using UnityEngine;
 public class StriderMovement : MonoBehaviour
 {
 	[SerializeField]
-	private float m_Speed;
+	private float m_Speed, m_TurnSpeed;
 
 	private Rigidbody m_Rigidbody;
 
@@ -15,6 +15,9 @@ public class StriderMovement : MonoBehaviour
 	private void FixedUpdate()
 	{
 		float accel = Input.GetAxis("Vertical");
-		m_Rigidbody.AddTorque(transform.right * accel * m_Speed, ForceMode.Acceleration);
+		m_Rigidbody.AddForce(transform.forward * accel * m_Speed * Time.deltaTime);
+
+		float turn = Input.GetAxis("Horizontal");
+		m_Rigidbody.AddTorque(transform.up * turn * m_TurnSpeed * Time.deltaTime);
 	}
 }
