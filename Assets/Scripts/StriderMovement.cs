@@ -9,8 +9,14 @@ public class StriderMovement : MonoBehaviour
 
 	private Rigidbody m_Rigidbody;
 
-	private void Awake() =>
+	private Transform m_Body;
+
+	private void Awake()
+	{
 		m_Rigidbody = GetComponent<Rigidbody>();
+
+		m_Body = transform.Find("Body");
+	}
 
 	private void FixedUpdate()
 	{
@@ -18,6 +24,7 @@ public class StriderMovement : MonoBehaviour
 		m_Rigidbody.AddForce(transform.forward * accel * m_Speed * Time.deltaTime);
 
 		float turn = Input.GetAxis("Horizontal");
-		m_Rigidbody.AddTorque(transform.up * turn * m_TurnSpeed * Time.deltaTime);
+		//m_Rigidbody.AddTorque(transform.up * turn * m_TurnSpeed * Time.deltaTime, ForceMode.Force);
+		m_Rigidbody.MoveRotation(Quaternion.Euler(m_Rigidbody.rotation.eulerAngles + transform.up * turn * m_TurnSpeed * Time.deltaTime));
 	}
 }
