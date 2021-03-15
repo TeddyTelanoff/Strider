@@ -242,7 +242,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -320,13 +320,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
+  m_LocalPosition: {x: 0, y: 7, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1966979302}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!1001 &989810403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,34 +446,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 989810403}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &989810411
-MeshCollider:
+--- !u!65 &989810411
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989810409}
-  m_Material: {fileID: 13400000, guid: ee09fc3b833d2c54e8c42da7e16a3df2, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 223432961529283812, guid: 6f5709b8349d48f4ebc25a4b32fe02cb, type: 3}
---- !u!64 &989810412
-MeshCollider:
+  serializedVersion: 2
+  m_Size: {x: 2.4999998, y: 2.5, z: 0.49999994}
+  m_Center: {x: -0.00000047683716, y: 0, z: 0.0000009536743}
+--- !u!65 &989810412
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989810410}
-  m_Material: {fileID: 13400000, guid: ee09fc3b833d2c54e8c42da7e16a3df2, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8209982959306984786, guid: 6f5709b8349d48f4ebc25a4b32fe02cb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.4999998, y: 2.5, z: 0.49999994}
+  m_Center: {x: -0.00000047683716, y: 0, z: 0.0000009536743}
 --- !u!1 &1067041385 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b6c9e4bb52b385e4fb02fb33d1f22b30,
@@ -504,12 +502,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b6c9e4bb52b385e4fb02fb33d1f22b30,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6c9e4bb52b385e4fb02fb33d1f22b30,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6c9e4bb52b385e4fb02fb33d1f22b30,
         type: 3}
@@ -519,7 +517,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b6c9e4bb52b385e4fb02fb33d1f22b30,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6c9e4bb52b385e4fb02fb33d1f22b30,
         type: 3}
@@ -603,14 +601,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966979301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 10, y: 12, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 312696030}
+  - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1966979303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,10 +622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594a9b70750acdd4eaab68aa306c12e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Speed: 50
+  m_TurnSpeed: 1
   m_FrontWheel: {fileID: 989810406}
   m_BackWheel: {fileID: 989810405}
   m_CheckDist: 1.75
-  m_CheckMul: 10
+  m_CheckMul: 2
 --- !u!54 &1966979304
 Rigidbody:
   m_ObjectHideFlags: 0
