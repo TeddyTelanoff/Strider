@@ -27,14 +27,15 @@ public class StriderMovement : MonoBehaviour
 		if (frontHit || backHit)
 		{
 			float diff = hitFront.distance - hitBack.distance;
-			m_Rigidbody.AddTorque(transform.right * diff * m_TurnSpeed * Time.deltaTime, ForceMode.Impulse);
-		}
+            //m_Rigidbody.AddTorque(transform.right * diff * m_TurnSpeed * Time.deltaTime, ForceMode.Impulse);
+            //m_Rigidbody.MoveRotation(Quaternion.Euler(m_Rigidbody.rotation.eulerAngles + transform.right * diff * Time.deltaTime));
+        }
 
 		float accel = Input.GetAxisRaw("Vertical");
 		m_Rigidbody.AddForce(transform.forward * accel * m_Speed * Time.deltaTime, ForceMode.Acceleration);
 
 		float turn = Input.GetAxisRaw("Horizontal");
-		m_Rigidbody.AddTorque(transform.up * turn * m_TurnSpeed * Time.deltaTime, ForceMode.Acceleration);
-		//m_Rigidbody.MoveRotation(Quaternion.Euler(m_Rigidbody.rotation.eulerAngles + transform.up * turn * m_TurnSpeed * Time.deltaTime));
-	}
+        //m_Rigidbody.AddTorque(transform.up * turn * m_TurnSpeed * Time.deltaTime, ForceMode.Acceleration);
+        m_Rigidbody.MoveRotation(Quaternion.Euler(m_Rigidbody.rotation.eulerAngles + transform.up * turn * m_TurnSpeed * Time.deltaTime));
+    }
 }

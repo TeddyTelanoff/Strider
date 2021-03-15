@@ -436,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b6c9e4bb52b385e4fb02fb33d1f22b30,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6c9e4bb52b385e4fb02fb33d1f22b30, type: 3}
@@ -458,7 +458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1334240894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2396,7 +2396,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: 0.096977234, y: 0.027983509, z: -0.00022768602}
-  m_TranslationOffset: {x: 0.028748736, y: -0.0074938796, z: 0.0067951046}
+  m_TranslationOffset: {x: 0.028748736, y: -0.007493876, z: 0.0067951046}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -2415,7 +2415,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: -0.065446116, y: 0.025814652, z: -0.00022575974}
-  m_TranslationOffset: {x: 0.009125292, y: 0.005636582, z: -0.00033273338}
+  m_TranslationOffset: {x: 0.009125292, y: 0.0056365784, z: -0.00033273338}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -2482,7 +2482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966979301}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 10, y: 3.828, z: -8}
+  m_LocalPosition: {x: 10, y: 0.75, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -2504,8 +2504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594a9b70750acdd4eaab68aa306c12e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 1000
-  m_TurnSpeed: 2000
+  m_Speed: 5000
+  m_TurnSpeed: 100
   m_Front: {fileID: 1827363222}
   m_Back: {fileID: 418669164}
 --- !u!54 &1966979304
@@ -2519,8 +2519,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 64
   m_CollisionDetection: 0
