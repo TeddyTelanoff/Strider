@@ -1,37 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StriderMovement : MonoBehaviour
 {
+	[Header("Stats")]
 	[SerializeField]
-	private float m_Speed;
-	[SerializeField]
-	private float m_TurnSpeed;
+	private Bike m_BikeStats;
+
+	private float m_Speed { get => m_BikeStats.Speed; }
+	private float m_TurnSpeed { get => m_BikeStats.TurnSpeed; }
+	[Header("Visuals")]
 	[SerializeField]
 	private Transform m_Collisions;
 	[SerializeField]
 	private Transform m_Model;
-	[SerializeField]
-	private float m_ModelMove;
-	[SerializeField]
-	private float m_DriftBoost;
-	[SerializeField]
-	private float m_AutoDrift;
 
-	[SerializeField]
-	private float m_NormDrag, m_BreakDrag;
+	private float m_ModelMove { get => m_BikeStats.ModelMove; }
+	private float m_DriftBoost { get => m_BikeStats.DriftBoost; }
+	private float m_AutoDrift { get => m_BikeStats.AutoDrift; }
 
+	private float m_NormDrag { get => m_BikeStats.NormDrag; }
+	private float m_BreakDrag { get => m_BikeStats.BreakDrag; }
+
+	[Header("Particles")]
 	[SerializeField]
-	private ParticleSystem m_Drift, m_Turbo;
+	private ParticleSystem m_Drift;
+	[SerializeField]
+	private ParticleSystem m_Turbo;
 
 	private Rigidbody m_Rigidbody;
 	private float m_TurboForce;
 	private DriftDir m_DriftDir;
 
+	[Header("Map")]
 	[SerializeField]
 	private uint m_LastCheckpoint;
 	private uint m_Checkpoint;
+	[SerializeField]
+	private TextMeshProUGUI m_LapCount;
+	[SerializeField]
+	private uint m_NumLaps;
 	private int m_Lap;
 
 	private void Awake() =>
@@ -86,12 +96,12 @@ public class StriderMovement : MonoBehaviour
 			{
 				m_Checkpoint = (checkpoint.Id + 1) % (m_LastCheckpoint + 1);
 				if (checkpoint.Id == 0)
-					m_Lap++;
+					m_LapCount.text = $"Lap {Mathi.Min(++m_Lap, (int)m_NumLaps)}/{m_NumLaps}";
 			}
 			else if (m_Checkpoint - 1 > checkpoint.Id || checkpoint.Id == m_LastCheckpoint)
 			{
 				if (m_Checkpoint == 1 && checkpoint.Id == m_LastCheckpoint)
-					m_Lap--;
+					m_LapCount.text = $"Lap {Mathi.Min(--m_Lap, (int)m_NumLaps)}/{m_NumLaps}";
 				m_Checkpoint = checkpoint.Id;
 			}
 		}
