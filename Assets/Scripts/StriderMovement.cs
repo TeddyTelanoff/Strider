@@ -18,7 +18,8 @@ public class StriderMovement : MonoBehaviour
 	private Transform m_Model;
 
 	private float m_ModelMove { get => m_BikeStats.ModelMove; }
-	private float m_DriftBoost { get => m_BikeStats.DriftBoost; }
+	private float m_MaxTurbo { get => m_BikeStats.MaxTurbo; }
+	private float m_TurboBoost { get => m_BikeStats.TurboBoost; }
 	private float m_AutoDrift { get => m_BikeStats.AutoDrift; }
 
 	private float m_NormDrag { get => m_BikeStats.NormDrag; }
@@ -67,7 +68,7 @@ public class StriderMovement : MonoBehaviour
 		if (breaking)
 		{
 			if (m_DriftDir != DriftDir.None)
-				m_TurboForce += m_DriftBoost * Time.deltaTime * turn;
+				m_TurboForce += Time.deltaTime * Mathf.Abs(turn);
 			else if (turn != 0)
 			{
 				m_Drift.Play();
@@ -76,7 +77,7 @@ public class StriderMovement : MonoBehaviour
 		}
 		else
 		{
-			m_Rigidbody.AddForce(transform.forward * m_TurboForce, ForceMode.Impulse);
+			m_Rigidbody.AddForce(transform.forward * Mathf.Min(m_TurboForce * m_TurboBoost, m_MaxTurbo), ForceMode.Impulse);
 			m_TurboForce = 0;
 			if (m_DriftDir != DriftDir.None)
 			{
