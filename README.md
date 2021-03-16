@@ -1,2 +1,0 @@
-# Strider
- Fun bike game
