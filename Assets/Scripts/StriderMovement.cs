@@ -29,6 +29,11 @@ public class StriderMovement : MonoBehaviour
 	private float m_TurboForce;
 	private DriftDir m_DriftDir;
 
+	[SerializeField]
+	private uint m_LastCheckpoint;
+	private uint m_Checkpoint;
+	private int m_Lap;
+
 	private void Awake() =>
 		m_Rigidbody = GetComponent<Rigidbody>();
 
@@ -40,7 +45,7 @@ public class StriderMovement : MonoBehaviour
 		float turn = Input.GetAxis("Horizontal");
 		if (m_DriftDir != DriftDir.None)
 			turn = Mathf.Clamp(turn, Mathf.Min((int)m_DriftDir, m_AutoDrift * (float)m_DriftDir), Mathf.Max((int)m_DriftDir, m_AutoDrift * (float)m_DriftDir));
-        m_Rigidbody.AddTorque(m_Collisions.up * turn * m_TurnSpeed * Time.deltaTime, ForceMode.Acceleration);
+		m_Rigidbody.AddTorque(m_Collisions.up * turn * m_TurnSpeed * Time.deltaTime, ForceMode.Acceleration);
 		//m_Rigidbody.MoveRotation(Quaternion.Euler(m_Rigidbody.rotation.eulerAngles + transform.up * turn * m_TurnSpeed * Time.deltaTime));
 
 		m_Model.localRotation = Quaternion.Euler(new Vector3(m_Collisions.localRotation.eulerAngles.x + m_ModelMove * -turn, m_Collisions.localRotation.eulerAngles.y + m_ModelMove * turn, m_Collisions.localRotation.eulerAngles.z));
@@ -68,6 +73,26 @@ public class StriderMovement : MonoBehaviour
 				m_Drift.Stop();
 				m_Turbo.Play();
 				m_DriftDir = DriftDir.None;
+			}
+		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.layer == LayerMask.NameToLayer("Checkpoint"))
+		{
+			var checkpoint = other.GetComponent<Checkpoint>();
+			if (m_Checkpoint == checkpoint.Id)
+			{
+				m_Checkpoint = (checkpoint.Id + 1) % (m_LastCheckpoint + 1);
+				if (checkpoint.Id == 0)
+					m_Lap++;
+			}
+			else if (m_Checkpoint - 1 > checkpoint.Id || checkpoint.Id == m_LastCheckpoint)
+			{
+				if (m_Checkpoint == 1 && checkpoint.Id == m_LastCheckpoint)
+					m_Lap--;
+				m_Checkpoint = checkpoint.Id;
 			}
 		}
 	}
